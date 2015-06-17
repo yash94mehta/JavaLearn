@@ -1,0 +1,73 @@
+import java.util.Arrays;
+import java.util.Comparator;
+
+
+ public class Dog
+{
+    int age;
+    String name;
+    
+    public Dog(String n,int a)
+    {
+        this.name=n;
+        this.age=a;
+    }
+}
+
+ class age_comparator implements Comparator<Dog>
+{
+
+    @Override
+    public int compare(Dog o1, Dog o2) {
+        return o1.age - o2.age;
+    }
+
+}
+
+ class name_comparator implements Comparator<Dog>
+{
+
+    @Override
+    public int compare(Dog o1, Dog o2) {
+        return o2.name.compareTo(o1.name);
+    }
+
+}
+
+class bc
+{
+    public static void main(String args[])
+    {
+        Dog[] d=new Dog[5];
+        Dog d1=new Dog("Scooby",20);
+        Dog d2=new Dog("Minky",7);
+        Dog d3=new Dog("Tuffy",13);
+        Dog d4=new Dog("Snoop",23);
+        Dog d5=new Dog("Kitty",2);
+        
+        d[0]=d1;
+        d[1]=d2;
+        d[2]=d3;
+        d[3]=d4;
+        d[4]=d5;
+        
+       
+        
+        Arrays.sort(d, new age_comparator());//ASCENDING BY AGE
+          
+        for(int i=0;i<d.length;i++)
+        {
+            System.out.println("dog name "+d[i].name+" dog age "+d[i].age);
+        }
+        
+        
+        System.out.println();
+        
+        Arrays.sort(d, new name_comparator());    //DESCENDING BY NAME
+        
+        for(int i=0;i<d.length;i++)
+        {
+            System.out.println("dog name "+d[i].name+" dog age "+d[i].age);
+        }
+    }
+}
